@@ -65,7 +65,7 @@
  *                if there are no codes at nBits, then we just keep << 1 each time 
  *                  (since count[nBits] = 0)
  **************************************************************************************/
-static int DecodeHuffmanScalar(const signed short *huffTab, const HuffInfo *huffTabInfo, unsigned int bitBuf, signed int *val)
+static int DecodeHuffmanScalar(const signed /*short*/ int *huffTab, const HuffInfo *huffTabInfo, unsigned int bitBuf, signed int *val)
 {
     unsigned int count, start, shift, t;
 	const unsigned char *countPtr;

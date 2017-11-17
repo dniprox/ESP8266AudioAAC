@@ -273,7 +273,7 @@ int PNS(AACDecInfo *aacDecInfo, int ch)
 {
 	int gp, sfb, win, width, nSamps, gb, gbMask;
 	int *coef;
-	const short *sfbTab;
+	const /*short*/ int *sfbTab;
 	unsigned char *sfbCodeBook;
 	short *scaleFactors;
 	int msMaskOffset, checkCorr, genNew;

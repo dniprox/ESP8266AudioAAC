@@ -48,7 +48,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wnarrowing"
 
-const int cos4sin4tabOffset[NUM_IMDCT_SIZES] = {0, 128};
+const int cos4sin4tabOffset[NUM_IMDCT_SIZES] PROGMEM = {0, 128};
 
 /* PreMultiply() tables
  * format = Q30 * 2^[-7, -10] for nmdct = [128, 1024] 
@@ -65,7 +65,7 @@ const int cos4sin4tabOffset[NUM_IMDCT_SIZES] = {0, 128};
  *   x = invM * sin(angle);
  * }
  */
-const int cos4sin4tab[128 + 1024] = {
+const int cos4sin4tab[128 + 1024] PROGMEM = {
 /* 128 - format = Q30 * 2^-7 */
 0xbf9bc731, 0xff9b783c, 0xbed5332c, 0xc002c697, 0xbe112251, 0xfe096c8d, 0xbd4f9c30, 0xc00f1c4a, 
 0xbc90a83f, 0xfc77ae5e, 0xbbd44dd9, 0xc0254e27, 0xbb1a9443, 0xfae67ba2, 0xba6382a6, 0xc04558c0, 
@@ -225,7 +225,7 @@ const int cos4sin4tab[128 + 1024] = {
  *   x = sin(angle);
  * }
  */
-const int cos1sin1tab[514] = {
+const int cos1sin1tab[514] PROGMEM = {
 /* format = Q30 */
 0x40000000, 0x00000000, 0x40323034, 0x003243f1, 0x406438cf, 0x006487c4, 0x409619b2, 0x0096cb58, 
 0x40c7d2bd, 0x00c90e90, 0x40f963d3, 0x00fb514b, 0x412accd4, 0x012d936c, 0x415c0da3, 0x015fd4d2, 
@@ -294,7 +294,7 @@ const int cos1sin1tab[514] = {
 0x5a82799a, 0x2d413ccd, 
 };
 
-const int sinWindowOffset[NUM_IMDCT_SIZES] = {0, 128};
+const int sinWindowOffset[NUM_IMDCT_SIZES] PROGMEM = {0, 128};
 
 /* Synthesis window - SIN
  * format = Q31 for nmdct = [128, 1024]
@@ -308,7 +308,7 @@ const int sinWindowOffset[NUM_IMDCT_SIZES] = {0, 128};
  *   x = sin(angle);
  * }
  */
-const int sinWindow[128 + 1024] = {
+const int sinWindow[128 + 1024] PROGMEM = {
 /* 128 - format = Q31 * 2^0 */
 0x00c90f88, 0x7fff6216, 0x025b26d7, 0x7ffa72d1, 0x03ed26e6, 0x7ff09478, 0x057f0035, 0x7fe1c76b, 
 0x0710a345, 0x7fce0c3e, 0x08a2009a, 0x7fb563b3, 0x0a3308bd, 0x7f97cebd, 0x0bc3ac35, 0x7f754e80, 
@@ -457,7 +457,7 @@ const int sinWindow[128 + 1024] = {
 0x5a05bdae, 0x5afe8a8b, 0x5a29727b, 0x5adb297d, 0x5a4d1960, 0x5ab7ba6c, 0x5a70b258, 0x5a943d5e, 
 };
 
-const int kbdWindowOffset[NUM_IMDCT_SIZES] = {0, 128};
+const int kbdWindowOffset[NUM_IMDCT_SIZES] PROGMEM = {0, 128};
 
 /* Synthesis window - KBD
  * format = Q31 for nmdct = [128, 1024]
@@ -470,7 +470,7 @@ const int kbdWindowOffset[NUM_IMDCT_SIZES] = {0, 128};
  * }
  * Note: see below for code to generate kbdWindowRef[]
  */
-const int kbdWindow[128 + 1024] = {
+const int kbdWindow[128 + 1024] PROGMEM = {
 /* 128 - format = Q31 * 2^0 */
 0x00016f63, 0x7ffffffe, 0x0003e382, 0x7ffffff1, 0x00078f64, 0x7fffffc7, 0x000cc323, 0x7fffff5d, 
 0x0013d9ed, 0x7ffffe76, 0x001d3a9d, 0x7ffffcaa, 0x0029581f, 0x7ffff953, 0x0038b1bd, 0x7ffff372, 
@@ -623,7 +623,7 @@ const int kbdWindow[128 + 1024] = {
 
 /* bit reverse tables for FFT */
 
-const int bitrevtabOffset[NUM_IMDCT_SIZES] = {0, 17};
+const int bitrevtabOffset[NUM_IMDCT_SIZES] PROGMEM = {0, 17};
 
 const unsigned char bitrevtab[17 + 129] = {
 /* nfft = 64 */
@@ -685,7 +685,7 @@ const unsigned char uniqueIDTab[8] = {0x5f, 0x4b, 0x43, 0x5f, 0x5f, 0x4a, 0x52, 
  *   }
  * }
  */
-const int twidTabOdd[8*6 + 32*6 + 128*6] = {
+const int twidTabOdd[8*6 + 32*6 + 128*6] PROGMEM = {
 	0x40000000, 0x00000000, 0x40000000, 0x00000000, 0x40000000, 0x00000000, 0x539eba45, 0xe7821d59, 
 	0x4b418bbe, 0xf383a3e2, 0x58c542c5, 0xdc71898d, 0x5a82799a, 0xd2bec333, 0x539eba45, 0xe7821d59, 
 	0x539eba45, 0xc4df2862, 0x539eba45, 0xc4df2862, 0x58c542c5, 0xdc71898d, 0x3248d382, 0xc13ad060, 
@@ -816,7 +816,7 @@ const int twidTabOdd[8*6 + 32*6 + 128*6] = {
 	0xbb771c81, 0x3fd39b5a, 0xc197049e, 0xfe6deaa1, 0x40c7d2bd, 0xc0013bd3, 0xbdb00d71, 0x3ff4e5e0, 
 };
 
-const int twidTabEven[4*6 + 16*6 + 64*6] = {
+const int twidTabEven[4*6 + 16*6 + 64*6] PROGMEM = {
 	0x40000000, 0x00000000, 0x40000000, 0x00000000, 0x40000000, 0x00000000, 0x5a82799a, 0xd2bec333, 
 	0x539eba45, 0xe7821d59, 0x539eba45, 0xc4df2862, 0x40000000, 0xc0000000, 0x5a82799a, 0xd2bec333, 
 	0x00000000, 0xd2bec333, 0x00000000, 0xd2bec333, 0x539eba45, 0xc4df2862, 0xac6145bb, 0x187de2a7, 

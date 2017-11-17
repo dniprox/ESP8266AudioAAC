@@ -319,7 +319,7 @@ typedef struct _PSInfoBase {
 int DecodeProgramConfigElement(ProgConfigElement *pce, BitStreamInfo *bsi);
 
 /* huffman.c */
-int DecodeHuffmanScalar(const signed short *huffTab, const HuffInfo *huffTabInfo, unsigned int bitBuf, signed int *val);
+int DecodeHuffmanScalar(const signed /*short*/ int *huffTab, const HuffInfo *huffTabInfo, unsigned int bitBuf, signed int *val);
 void DecodeSpectrumLong(PSInfoBase *psi, BitStreamInfo *bsi, int ch);
 void DecodeSpectrumShort(PSInfoBase *psi, BitStreamInfo *bsi, int ch);
 
@@ -340,9 +340,9 @@ void DecWindowOverlapShortNoClip(int *buf0, int *over0, int *out0, int winTypeCu
 
 /* hufftabs.c */
 extern const HuffInfo huffTabSpecInfo[11];
-extern const signed short huffTabSpec[1241];
+extern const signed /*short*/ int huffTabSpec[1241];
 extern const HuffInfo huffTabScaleFactInfo; 
-extern const signed short huffTabScaleFact[121];
+extern const signed /*short*/ int huffTabScaleFact[121];
 
 /* trigtabs.c */
 extern const int cos4sin4tabOffset[NUM_IMDCT_SIZES];

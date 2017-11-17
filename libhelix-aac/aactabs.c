@@ -46,25 +46,25 @@
 #include "aaccommon.h"
 
 /* sample rates (table 4.5.1) */
-const int sampRateTab[NUM_SAMPLE_RATES] = {
+const int sampRateTab[NUM_SAMPLE_RATES] PROGMEM = {
     96000, 88200, 64000, 48000, 44100, 32000, 
 	24000, 22050, 16000, 12000, 11025,  8000
 };
 
 /* max scalefactor band for prediction (main profile only) */
-const int predSFBMax[NUM_SAMPLE_RATES] = {
+const int predSFBMax[NUM_SAMPLE_RATES] PROGMEM = {
 	33, 33, 38, 40, 40, 40, 41, 41, 37, 37, 37, 34
 };
 
 /* channel mapping (table 1.6.3.4) (-1 = unknown, so need to determine mapping based on rules in 8.5.1) */
-const int channelMapTab[NUM_DEF_CHAN_MAPS] = {
+const int channelMapTab[NUM_DEF_CHAN_MAPS] PROGMEM = {
 	-1, 1, 2, 3, 4, 5, 6, 8
 };
 
 /* number of channels in each element (SCE, CPE, etc.)
  * see AACElementID in aaccommon.h 
  */
-const int elementNumChans[NUM_ELEMENTS] = {
+const int elementNumChans[NUM_ELEMENTS] PROGMEM = {
 	1, 2, 0, 1, 0, 0, 0, 0
 };
 
@@ -78,9 +78,9 @@ const unsigned char sfBandTotalLong[NUM_SAMPLE_RATES] = {
 };
 
 /* scale factor band tables */
-const int sfBandTabShortOffset[NUM_SAMPLE_RATES] = {0, 0, 0, 13, 13, 13, 28, 28, 44, 44, 44, 60};
+const int sfBandTabShortOffset[NUM_SAMPLE_RATES] PROGMEM = {0, 0, 0, 13, 13, 13, 28, 28, 44, 44, 44, 60};
 
-const short sfBandTabShort[76] = {
+const /*short*/ int sfBandTabShort[76] PROGMEM = {
 	/* short block 64, 88, 96 kHz [13] (tables 4.5.24, 4.5.26) */
 	0,   4,   8,  12,  16,  20,  24,  32,  40,  48,  64,  92, 128,
 
@@ -97,9 +97,9 @@ const short sfBandTabShort[76] = {
 	0,   4,   8,  12,  16,  20,  24,  28,  36,  44,  52,  60,  72,  88, 108, 128
 };
 
-const int sfBandTabLongOffset[NUM_SAMPLE_RATES] = {0, 0, 42, 90, 90, 140, 192, 192, 240, 240, 240, 284};
+const int sfBandTabLongOffset[NUM_SAMPLE_RATES] PROGMEM = {0, 0, 42, 90, 90, 140, 192, 192, 240, 240, 240, 284};
 
-const short sfBandTabLong[325] = {
+const /*short*/ int sfBandTabLong[325] PROGMEM = {
 	/* long block 88, 96 kHz [42] (table 4.5.25) */
 	  0,   4,   8,  12,  16,  20,  24,  28,  32,  36,  40,  44,  48,   52,
 	 56,  64,  72,  80,  88,  96, 108, 120, 132, 144, 156, 172, 188,  212,
@@ -138,7 +138,7 @@ const short sfBandTabLong[325] = {
 
 
 /* TNS max bands (table 4.139) and max order (table 4.138) */
-const int tnsMaxBandsShortOffset[AAC_NUM_PROFILES] = {0, 0, 12};
+const int tnsMaxBandsShortOffset[AAC_NUM_PROFILES] PROGMEM = {0, 0, 12};
 
 const unsigned char tnsMaxBandsShort[2*NUM_SAMPLE_RATES] = {
 	 9,  9, 10, 14, 14, 14, 14, 14, 14, 14, 14, 14,		/* short block, Main/LC */
@@ -147,7 +147,7 @@ const unsigned char tnsMaxBandsShort[2*NUM_SAMPLE_RATES] = {
 
 const unsigned char tnsMaxOrderShort[AAC_NUM_PROFILES] = {7, 7, 7};
 
-const int tnsMaxBandsLongOffset[AAC_NUM_PROFILES] = {0, 0, 12};
+const int tnsMaxBandsLongOffset[AAC_NUM_PROFILES] PROGMEM = {0, 0, 12};
 
 const unsigned char tnsMaxBandsLong[2*NUM_SAMPLE_RATES] = {
 	31, 31, 34, 40, 42, 51, 46, 46, 42, 42, 42, 39,		/* long block, Main/LC */
