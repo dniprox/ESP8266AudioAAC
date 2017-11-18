@@ -298,7 +298,7 @@ static void UnpackZeros(int nVals, int *coef)
 /* __attribute__ ((section (".data"))) */ void DecodeSpectrumLong(PSInfoBase *psi, BitStreamInfo *bsi, int ch)
 {
 	int i, sfb, cb, nVals, offset;
-	const short *sfbTab;
+	const /*short*/ int *sfbTab;
 	unsigned char *sfbCodeBook;
 	int *coef;
 	ICSInfo *icsInfo;
@@ -369,7 +369,7 @@ static void UnpackZeros(int nVals, int *coef)
 /* __attribute__ ((section (".data"))) */ void DecodeSpectrumShort(PSInfoBase *psi, BitStreamInfo *bsi, int ch)
 {
 	int gp, cb, nVals=0, win, offset, sfb;
-	const short *sfbTab;
+	const /*short*/ int *sfbTab;
 	unsigned char *sfbCodeBook;
 	int *coef;
 	ICSInfo *icsInfo;

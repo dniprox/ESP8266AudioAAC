@@ -76,7 +76,7 @@
  * Notes:       assume no guard bits in input
  *              gains 0 int bits
  **************************************************************************************/
-static void StereoProcessGroup(int *coefL, int *coefR, const short *sfbTab, 
+static void StereoProcessGroup(int *coefL, int *coefR, const /*short*/ int *sfbTab, 
 							  int msMaskPres, unsigned char *msMaskPtr, int msMaskOffset, int maxSFB, 
 							  unsigned char *cbRight, short *sfRight, int *gbCurrent)
 {
@@ -197,7 +197,7 @@ int StereoProcess(AACDecInfo *aacDecInfo)
 	int gp, win, nSamps, msMaskOffset;
 	int *coefL, *coefR;
 	unsigned char *msMaskPtr;
-	const short *sfbTab;
+	const /*short*/ int *sfbTab;
 
 	/* validate pointers */
 	if (!aacDecInfo || !aacDecInfo->psInfoBase)

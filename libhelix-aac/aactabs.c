@@ -80,7 +80,7 @@ const unsigned char sfBandTotalLong[NUM_SAMPLE_RATES] = {
 /* scale factor band tables */
 const int sfBandTabShortOffset[NUM_SAMPLE_RATES] PROGMEM = {0, 0, 0, 13, 13, 13, 28, 28, 44, 44, 44, 60};
 
-const short sfBandTabShort[76] = {
+const /*short*/ int sfBandTabShort[76] PROGMEM = {
 	/* short block 64, 88, 96 kHz [13] (tables 4.5.24, 4.5.26) */
 	0,   4,   8,  12,  16,  20,  24,  32,  40,  48,  64,  92, 128,
 
@@ -99,7 +99,7 @@ const short sfBandTabShort[76] = {
 
 const int sfBandTabLongOffset[NUM_SAMPLE_RATES] PROGMEM = {0, 0, 42, 90, 90, 140, 192, 192, 240, 240, 240, 284};
 
-const short sfBandTabLong[325] = {
+const /*short*/ int sfBandTabLong[325] PROGMEM = {
 	/* long block 88, 96 kHz [42] (table 4.5.25) */
 	  0,   4,   8,  12,  16,  20,  24,  28,  32,  36,  40,  44,  48,   52,
 	 56,  64,  72,  80,  88,  96, 108, 120, 132, 144, 156, 172, 188,  212,
