@@ -76,14 +76,14 @@
  * Notes:       assume no guard bits in input
  *              gains 0 int bits
  **************************************************************************************/
-static void StereoProcessGroup(int *coefL, int *coefR, const /*short*/ int *sfbTab, 
+static void StereoProcessGroup(int *coefL, int *coefR, const short *sfbTab, 
 							  int msMaskPres, unsigned char *msMaskPtr, int msMaskOffset, int maxSFB, 
 							  unsigned char *cbRight, short *sfRight, int *gbCurrent)
 {
 //fb
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wnarrowing"
-static const int pow14[2][4] PROGMEM = { 
+static const int pow14[2][4] = { 
 	{ 0xc0000000, 0xb3e407d7, 0xa57d8666, 0x945d819b }, 
 	{ 0x40000000, 0x4c1bf829, 0x5a82799a, 0x6ba27e65 }
 };
@@ -197,7 +197,7 @@ int StereoProcess(AACDecInfo *aacDecInfo)
 	int gp, win, nSamps, msMaskOffset;
 	int *coefL, *coefR;
 	unsigned char *msMaskPtr;
-	const /*short*/ int *sfbTab;
+	const short *sfbTab;
 
 	/* validate pointers */
 	if (!aacDecInfo || !aacDecInfo->psInfoBase)

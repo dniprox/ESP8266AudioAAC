@@ -23,9 +23,6 @@
 
 // Isolate any globals these guys provide in their own namespace...
 namespace AAC {
-#define REV16(a) (a)
-#define REV32(a) (a)
-
 #include "libhelix-aac/assembly.h"
 
 #include "libhelix-aac/aacdec.h"
@@ -58,7 +55,6 @@ AudioGeneratorAAC::AudioGeneratorAAC()
   file = NULL;
   output = NULL;
   hAACDecoder = AAC::AACInitDecoder();
-  Serial.printf("initdec done\n");
   // For sanity's sake...
   memset(buff, 0, sizeof(buff));
   memset(outSample, 0, sizeof(outSample));
@@ -67,7 +63,6 @@ AudioGeneratorAAC::AudioGeneratorAAC()
   curSample = 0;
   lastRate = 0;
   lastChannels = 0;
-  Serial.printf("aac creation done\n");
 }
 
 AudioGeneratorAAC::~AudioGeneratorAAC()
@@ -104,8 +99,17 @@ bool AudioGeneratorAAC::FillBufferWithValidFrame()
       }
     }
   } while (nextSync == -1);
-  Serial.printf("nextSync @ %d, pos %d\n", nextSync, file->getPos());
-  // We have a sync word at 0 now, success!
+
+  // Move the frame to start at offset 0 in the buffer
+  buffValid -= nextSync; // Throw out prior to nextSync
+  memmove(buff, buff+nextSync, buffValid);
+
+  // We have a sync word at 0 now, try and fill remainder of buffer
+  buffValid += file->read(buff + buffValid, sizeof(buff) - buffValid);
+
+//  Serial.printf("FillBufferWithValidFrame, buffValid = %d\n", buffValid);
+//  for (int i=0; i<buffValid; i++) {Serial.printf("%02x%c", buff[i],(i%32==31)?'\n':',');}
+//  Serial.printf("\n"); yield();
   return true;
 }
 
@@ -127,9 +131,11 @@ bool AudioGeneratorAAC::loop()
     // buff[0] start of frame, decode it...
     unsigned char *inBuff = reinterpret_cast<unsigned char *>(buff);
     int bytesLeft = buffValid;
-    if (AAC::AACDecode(hAACDecoder, &inBuff, &bytesLeft, outSample)) {
+    int ret;
+    if (ret = AAC::AACDecode(hAACDecoder, &inBuff, &bytesLeft, outSample)) {
       // Error, abort
-      running = false;
+      Serial.printf("AAC decode error %d\n", ret);
+      //running = false;
     } else {
       AACFrameInfo fi;
       AAC::AACGetLastFrameInfo(hAACDecoder, &fi);

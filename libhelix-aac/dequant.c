@@ -295,7 +295,7 @@ int Dequantize(AACDecInfo *aacDecInfo, int ch)
 {
 	int gp, cb, sfb, win, width, nSamps, gbMask;
 	int *coef;
-	const /*short*/ int *sfbTab;
+	const short *sfbTab;
 	unsigned char *sfbCodeBook;
 	short *scaleFactors;
 	PSInfoBase *psi;

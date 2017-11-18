@@ -64,11 +64,11 @@
  *                if there are no codes at nBits, then we just keep << 1 each time 
  *                  (since count[nBits] = 0)
  **************************************************************************************/
-/* __attribute__ ((section (".data"))) */ int DecodeHuffmanScalar(const signed /*short*/ int *huffTab, const HuffInfo *huffTabInfo, unsigned int bitBuf, signed int *val)
+/* __attribute__ ((section (".data"))) */ int DecodeHuffmanScalar(const signed short *huffTab, const HuffInfo *huffTabInfo, unsigned int bitBuf, signed int *val)
 {
     unsigned int count, start, shift, t;
 	const unsigned char *countPtr;
-	const signed /*short*/ int *map;
+	const signed short *map;
 
 	map = huffTab + huffTabInfo->offset;
 	countPtr = huffTabInfo->count;
@@ -85,7 +85,7 @@
 		t = (bitBuf >> shift) - start;
 	} while (t >= count);
 	
-	*val = (signed int)((signed short)map[t]);
+	*val = (signed int)map[t];
 	return (countPtr - huffTabInfo->count);
 }
 
@@ -298,7 +298,7 @@ static void UnpackZeros(int nVals, int *coef)
 /* __attribute__ ((section (".data"))) */ void DecodeSpectrumLong(PSInfoBase *psi, BitStreamInfo *bsi, int ch)
 {
 	int i, sfb, cb, nVals, offset;
-	const /*short*/ int *sfbTab;
+	const short *sfbTab;
 	unsigned char *sfbCodeBook;
 	int *coef;
 	ICSInfo *icsInfo;
@@ -369,7 +369,7 @@ static void UnpackZeros(int nVals, int *coef)
 /* __attribute__ ((section (".data"))) */ void DecodeSpectrumShort(PSInfoBase *psi, BitStreamInfo *bsi, int ch)
 {
 	int gp, cb, nVals=0, win, offset, sfb;
-	const /*short*/ int *sfbTab;
+	const short *sfbTab;
 	unsigned char *sfbCodeBook;
 	int *coef;
 	ICSInfo *icsInfo;
