@@ -148,7 +148,7 @@ bool AudioGeneratorAAC::loop()
         lastChannels = fi.nChans;
       }
       curSample = 0;
-      validSamples = fi.outputSamps/2;
+      validSamples = fi.outputSamps / lastChannels;
     }
   } else {
     running = false; // No more data, we're done here...
