@@ -56,12 +56,12 @@
  * see bottom of file for table generation
  * negative (vs. spec) since we use MADD for filter kernel
  */
-static const int invQuant3[16] = {
+static const int invQuant3[16] PROGMEM = {
 	0x00000000, 0xc8767f65, 0x9becf22c, 0x83358feb, 0x83358feb, 0x9becf22c, 0xc8767f65, 0x00000000,
 	0x2bc750e9, 0x5246dd49, 0x6ed9eba1, 0x7e0e2e32, 0x7e0e2e32, 0x6ed9eba1, 0x5246dd49, 0x2bc750e9,
 };
 
-static const int invQuant4[16] = {
+static const int invQuant4[16] PROGMEM = {
 	0x00000000, 0xe5632654, 0xcbf00dbe, 0xb4c373ee, 0xa0e0a15f, 0x9126145f, 0x8643c7b3, 0x80b381ac,
 	0x7f7437ad, 0x7b1d1a49, 0x7294b5f2, 0x66256db2, 0x563ba8aa, 0x4362210e, 0x2e3d2abb, 0x17851aad,
 };

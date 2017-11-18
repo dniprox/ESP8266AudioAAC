@@ -144,7 +144,7 @@ static int ScaleNoiseVector(int *coef, int nVals, int sf)
 {
 
 /* pow(2, i/4.0) for i = [0,1,2,3], format = Q30 */
-static const int pow14[4] = { 
+static const int pow14[4] PROGMEM = { 
 	0x40000000, 0x4c1bf829, 0x5a82799a, 0x6ba27e65
 };
 

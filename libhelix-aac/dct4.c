@@ -46,8 +46,8 @@
 #include "coder.h"
 //#include "assembly.h"
 
-static const int nmdctTab[NUM_IMDCT_SIZES] = {128, 1024};
-static const int postSkip[NUM_IMDCT_SIZES] = {15, 1};
+static const int nmdctTab[NUM_IMDCT_SIZES] PROGMEM = {128, 1024};
+static const int postSkip[NUM_IMDCT_SIZES] PROGMEM = {15, 1};
 
 /**************************************************************************************
  * Function:    PreMultiply

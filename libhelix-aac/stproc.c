@@ -83,7 +83,7 @@ static void StereoProcessGroup(int *coefL, int *coefR, const short *sfbTab,
 //fb
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wnarrowing"
-static const int pow14[2][4] = { 
+static const int pow14[2][4] PROGMEM = {
 	{ 0xc0000000, 0xb3e407d7, 0xa57d8666, 0x945d819b }, 
 	{ 0x40000000, 0x4c1bf829, 0x5a82799a, 0x6ba27e65 }
 };

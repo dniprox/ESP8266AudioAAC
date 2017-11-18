@@ -44,11 +44,10 @@
  **************************************************************************************/
 
 #include "coder.h"
-//#include "assembly.h"
 
 #define NUM_FFT_SIZES	2
-static const int nfftTab[NUM_FFT_SIZES] =		{64, 512};
-static const int nfftlog2Tab[NUM_FFT_SIZES] =	{6, 9};
+static const int nfftTab[NUM_FFT_SIZES] PROGMEM ={64, 512};
+static const int nfftlog2Tab[NUM_FFT_SIZES] PROGMEM = {6, 9};
 
 #define SQRT1_2 0x5a82799a	/* sqrt(1/2) in Q31 */
 
