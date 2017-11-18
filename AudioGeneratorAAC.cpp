@@ -59,6 +59,7 @@ AudioGeneratorAAC::AudioGeneratorAAC()
   memset(buff, 0, sizeof(buff));
   memset(outSample, 0, sizeof(outSample));
   buffValid = 0;
+  lastFrameEnd = 0;
   validSamples = 0;
   curSample = 0;
   lastRate = 0;
@@ -87,7 +88,9 @@ bool AudioGeneratorAAC::FillBufferWithValidFrame()
   buff[0] = 0; // Destroy any existing sync word @ 0
   int nextSync;
   do {
-    nextSync = AAC::AACFindSyncWord(buff, buffValid);
+    nextSync = AAC::AACFindSyncWord(buff + lastFrameEnd, buffValid - lastFrameEnd);
+    if (nextSync >= 0) nextSync += lastFrameEnd;
+    lastFrameEnd = 0;
     if (nextSync == -1) {
       if (buff[buffValid-1]==0xff) { // Could be 1st half of syncword, preserve it...
         buff[0] = 0xff;
@@ -107,9 +110,6 @@ bool AudioGeneratorAAC::FillBufferWithValidFrame()
   // We have a sync word at 0 now, try and fill remainder of buffer
   buffValid += file->read(buff + buffValid, sizeof(buff) - buffValid);
 
-//  Serial.printf("FillBufferWithValidFrame, buffValid = %d\n", buffValid);
-//  for (int i=0; i<buffValid; i++) {Serial.printf("%02x%c", buff[i],(i%32==31)?'\n':',');}
-//  Serial.printf("\n"); yield();
   return true;
 }
 
@@ -133,10 +133,10 @@ bool AudioGeneratorAAC::loop()
     int bytesLeft = buffValid;
     int ret;
     if (ret = AAC::AACDecode(hAACDecoder, &inBuff, &bytesLeft, outSample)) {
-      // Error, abort
+      // Error, skip the frame...
       Serial.printf("AAC decode error %d\n", ret);
-      //running = false;
     } else {
+      lastFrameEnd = buffValid - bytesLeft;
       AACFrameInfo fi;
       AAC::AACGetLastFrameInfo(hAACDecoder, &fi);
       if (fi.sampRateOut != lastRate) {
@@ -148,7 +148,7 @@ bool AudioGeneratorAAC::loop()
         lastChannels = fi.nChans;
       }
       curSample = 0;
-      validSamples = fi.outputSamps;
+      validSamples = fi.outputSamps/2;
     }
   } else {
     running = false; // No more data, we're done here...

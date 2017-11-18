@@ -39,8 +39,9 @@ class AudioGeneratorAAC : AudioGenerator
     HAACDecoder hAACDecoder;
 
     // Input buffering
-    uint8_t buff[2000]; // File buffer required to store at least a whole compressed frame
+    uint8_t buff[1600]; // File buffer required to store at least a whole compressed frame
     int16_t buffValid;
+    int16_t lastFrameEnd;
     bool FillBufferWithValidFrame(); // Read until we get a valid syncword and min(feof, 2048) butes in the buffer
 
     // Output buffering
