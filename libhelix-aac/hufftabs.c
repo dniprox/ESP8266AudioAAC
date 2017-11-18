@@ -45,7 +45,7 @@
 
 #include "coder.h"
 
-const HuffInfo huffTabSpecInfo[11] = {
+const HuffInfo huffTabSpecInfo[11] PROGMEM = {
 	/* table 0 not used */
 	{11, {  1,  0,  0,  0,  8,  0, 24,  0, 24,  8, 16,  0,  0,  0,  0,  0,  0,  0,  0,  0},   0},
 	{ 9, {  0,  0,  1,  1,  7, 24, 15, 19, 14,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},  81},

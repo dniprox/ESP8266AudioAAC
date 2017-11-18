@@ -156,7 +156,7 @@
 
 typedef struct _HuffInfo {
     int maxBits;                                                    /* number of bits in longest codeword */
-    unsigned char count[MAX_HUFF_BITS];         /* count[i] = number of codes with length i+1 bits */
+    unsigned /*char*/ int count[MAX_HUFF_BITS];         /* count[i] = number of codes with length i+1 bits */
     int offset;                                                             /* offset into symbol table */
 } HuffInfo;
 

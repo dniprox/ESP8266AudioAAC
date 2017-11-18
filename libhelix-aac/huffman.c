@@ -67,7 +67,7 @@
 /* __attribute__ ((section (".data"))) */ int DecodeHuffmanScalar(const signed short *huffTab, const HuffInfo *huffTabInfo, unsigned int bitBuf, signed int *val)
 {
     unsigned int count, start, shift, t;
-	const unsigned char *countPtr;
+	const unsigned /*char*/ int *countPtr;
 	const signed short *map;
 
 	map = huffTab + huffTabInfo->offset;
