@@ -85,7 +85,7 @@
 		t = (bitBuf >> shift) - start;
 	} while (t >= count);
 	
-	*val = (signed int)map[t];
+	*val = (signed int)pgm_read_word(&map[t]);
 	return (countPtr - huffTabInfo->count);
 }
 

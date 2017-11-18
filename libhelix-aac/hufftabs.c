@@ -60,7 +60,7 @@ const HuffInfo huffTabSpecInfo[11] = {
 	{12, {  0,  0,  0,  2,  6,  7, 16, 59, 55, 95, 43,  6,  0,  0,  0,  0,  0,  0,  0,  0}, 952},
 };
 
-const signed short huffTabSpec[1241] = {
+const signed short huffTabSpec[1241] PROGMEM = {
 	/* spectrum table 1 [81] (signed) */
 	0x0000, 0x0200, 0x0e00, 0x0007, 0x0040, 0x0001, 0x0038, 0x0008, 0x01c0, 0x03c0, 0x0e40, 0x0039, 0x0078, 0x01c8, 0x000f, 0x0240, 
 	0x003f, 0x0fc0, 0x01f8, 0x0238, 0x0047, 0x0e08, 0x0009, 0x0208, 0x01c1, 0x0048, 0x0041, 0x0e38, 0x0201, 0x0e07, 0x0207, 0x0e01, 
@@ -163,7 +163,7 @@ const HuffInfo huffTabScaleFactInfo =
 	{19, { 1,  0,  1,  3,  2,  4,  3,  5,  4,  6,  6,  6,  5,  8,  4,  7,  3,  7, 46,  0},   0};
 
 /* note - includes offset of -60 (4.6.2.3 in spec) */
-const signed short huffTabScaleFact[121] = {
+const signed short huffTabScaleFact[121] PROGMEM = {
 		/* scale factor table [121] */
 	   0,   -1,    1,   -2,    2,   -3,    3,   -4,    4,   -5,    5,    6,   -6,    7,   -7,    8,
 	  -8,    9,   -9,   10,  -10,  -11,   11,   12,  -12,   13,  -13,   14,  -14,   16,   15,   17,
